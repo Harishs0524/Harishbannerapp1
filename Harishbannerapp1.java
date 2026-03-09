@@ -1,34 +1,54 @@
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 public class Harishbannerapp1 {
 
-    static class CharPatternMap {
-        private final char character;
-        private final String[] pattern;
+    private static Map<Character, String[]> buildPatternMap() {
+        Map<Character, String[]> map = new LinkedHashMap<>();
 
-        public CharPatternMap(char character, String[] pattern) {
-            this.character = character;
-            this.pattern = pattern;
-        }
-        public char getCharacter() {
-            return character;
-        }
-         public String[] getPattern() { 
-            return pattern;
-        }
+        map.put('O', new String[]{
+            " *** ",
+            "*   *",
+            "*   *",
+            "*   *",
+            " *** "
+        });
+
+        map.put('P', new String[]{
+            "**** ",
+            "*   *",
+            "**** ",
+            "*    ",
+            "*    "
+        });
+
+        map.put('S', new String[]{
+            " ****",
+            "*    ",
+            " *** ",
+            "    *",
+            "**** "
+        });
+
+        return map;
     }
-    public static void main(String[] args) {
-        CharPatternMap[] letters = {
-            new CharPatternMap('O', new String[]{" *** ", "*   *", "*   *", "*   *", " *** "}),
-            new CharPatternMap('O', new String[]{" *** ", "*   *", "*   *", "*   *", " *** "}),
-            new CharPatternMap('P', new String[]{"**** ", "*   *", "**** ", "*    ", "*    "}),
-            new CharPatternMap('S', new String[]{" ****", "*    ", " *** ", "    *", "**** "})
-        };
+
+    public static void renderBanner(String word) {
+        Map<Character, String[]> patternMap = buildPatternMap();
+
         for (int row = 0; row < 5; row++) {
             StringBuilder line = new StringBuilder();
-            for (CharPatternMap letter : letters) {
-                line.append(letter.getPattern()[row]).append("  ");
+
+            for (char ch : word.toCharArray()) {
+                line.append(patternMap.get(ch)[row]).append("  ");
             }
+
             System.out.println(line);
         }
+    }
+
+    public static void main(String[] args) {
+        renderBanner("OOPS");
     }
 }
     
