@@ -1,7 +1,7 @@
 public class Harishbannerapp1 {
-    public static void main(String[] args) {
+    public static String[] getOOPSpattern() {
+        return new String[]{
 
-        String[] lines = {
                 "  ***    ***    *****   ***** ",
                 " *   *  *   *   *    *  *     ",
                 "*     **     *  *    *  *     ",
@@ -10,8 +10,13 @@ public class Harishbannerapp1 {
                 " *   *  *   *   *           * ",
                 "  ***    ***    *       ***** "
         };
-        for (String line : lines) {
-            System.out.println(line);
-        }
+    }
+
+    public static void main(String[] args) {
+        String[] str=getOOPSpattern();
+       for(int i=0;i<str.length;i++){
+           System.out.println(str[i]);
+       }
     }
 }
+     
